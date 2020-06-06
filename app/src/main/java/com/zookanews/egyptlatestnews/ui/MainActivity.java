@@ -14,7 +14,15 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.zookanews.egyptlatestnews.R;
+import com.zookanews.egyptlatestnews.model.RssFeedResponse;
+import com.zookanews.egyptlatestnews.remote.ApiClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +51,22 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        ApiClient.getInstance().getResponse().enqueue(new Callback<RssFeedResponse>() {
+            @Override
+            public void onResponse(Call<RssFeedResponse> call, Response<RssFeedResponse> response) {
+                Timber.d("Response Code: " + response.code());
+                Timber.d("onResponse...");
+                Timber.d("Response: " + new Gson().toJson(response.body()));
+                Timber.d(response.body().getVersion());
+                Timber.d("Title -> " + response.body().getChannel().getArticles().get(0).getTitle());
+            }
+
+            @Override
+            public void onFailure(Call<RssFeedResponse> call, Throwable t) {
+                Timber.d("Error: " + t.getMessage());
+            }
+        });
     }
 
     @Override

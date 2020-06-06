@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1669737762-t5qa8hdv7k5qkhshob8sig9ibf2b30kt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zookanews.egyptlatestnews",
+            "certificate_hash": "a23996619a0672c344b12aab3446214d1eaba658"
+          }
+        },
+        {
           "client_id": "1669737762-dv28k28sujpini954dr8t4cfovt8rgv8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

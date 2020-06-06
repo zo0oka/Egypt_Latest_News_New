@@ -85,7 +85,7 @@
                     android:title="@string/nav_travel"
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
-                <item
+                <article
                     android:id="@+id/nav_health"
                     android:icon="@drawable/ic_nav_health"
                     android:title="@string/nav_health"

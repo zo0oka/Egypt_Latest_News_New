@@ -3,3 +3,4 @@ com/google/android/gms/common/internal/Preconditions.class
 com/google/firebase/FirebaseApp.class
 com/google/firebase/FirebaseApp$UiExecutor.class
 androidx/collection/ArrayMap.class
+org/conscrypt/ConscryptHostnameVerifier.class
