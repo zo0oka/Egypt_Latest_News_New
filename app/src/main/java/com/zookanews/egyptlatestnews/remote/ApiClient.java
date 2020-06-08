@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
  * Created by Zo0okaDev (https://github.com/zo0oka)
@@ -14,7 +13,7 @@ import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
  */
 public class ApiClient {
 
-    public static final String BASE_URL = "https://www.dostor.org/";
+    public static final String BASE_URL = "https://www.elfagr.com/";
     private static ApiService instance = null;
 
     public static ApiService getInstance() {
@@ -48,8 +47,7 @@ public class ApiClient {
                     new Retrofit
                             .Builder()
                             .client(client)
-                            .baseUrl(BASE_URL)
-                            .addConverterFactory(SimpleXmlConverterFactory.create());
+                            .baseUrl(BASE_URL);
 
             instance = builder.build().create(ApiService.class);
         }

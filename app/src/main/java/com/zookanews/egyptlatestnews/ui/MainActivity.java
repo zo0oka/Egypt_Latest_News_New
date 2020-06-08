@@ -16,9 +16,22 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.zookanews.egyptlatestnews.R;
-import com.zookanews.egyptlatestnews.model.RssFeedResponse;
+import com.zookanews.egyptlatestnews.parser.SaxXmlHandler;
 import com.zookanews.egyptlatestnews.remote.ApiClient;
 
+import org.jetbrains.annotations.NotNull;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.Executor;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParserFactory;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavController navController;
+    private Executor executor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,20 +66,29 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        ApiClient.getInstance().getResponse().enqueue(new Callback<RssFeedResponse>() {
-            @Override
-            public void onResponse(Call<RssFeedResponse> call, Response<RssFeedResponse> response) {
-                Timber.d("Response Code: " + response.code());
-                Timber.d("onResponse...");
-                Timber.d("Response: " + new Gson().toJson(response.body()));
-                Timber.d(response.body().getVersion());
-                Timber.d("Title -> " + response.body().getChannel().getArticles().get(0).getTitle());
-            }
+        ApiClient.getInstance().getResponse("https://www.youm7.com/rss/SectionRss?SectionID=203")
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
+                        Timber.d("Response Code: " + response.code());
+                        Timber.d("onResponse...");
+                        Timber.d("Response: " + new Gson().toJson(response.body()));
+                        InputStream inputStream = response.body().byteStream();
+                        try {
+                            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser()
+                                    .getXMLReader();
+                            SaxXmlHandler saxHandler = new SaxXmlHandler();
+                            xmlReader.setContentHandler(saxHandler);
+                            xmlReader.parse(new InputSource(inputStream));
+                        } catch (ParserConfigurationException | IOException | SAXException e) {
+                            e.printStackTrace();
+                        }
+                    }
 
-            @Override
-            public void onFailure(Call<RssFeedResponse> call, Throwable t) {
-                Timber.d("Error: " + t.getMessage());
-            }
+                    @Override
+                    public void onFailure(@NotNull Call<ResponseBody> call, @NotNull Throwable t) {
+                        Timber.d("Error: " + t.getMessage());
+                    }
         });
     }
 

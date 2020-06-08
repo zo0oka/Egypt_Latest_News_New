@@ -14,23 +14,23 @@ import java.util.List;
 @Root(name = "channel", strict = false)
 public class Channel {
 
-    @Element(name = "image")
+    @Element(name = "image", required = false)
     private Image image;
-    @Element(name = "copyright")
+    @Element(name = "copyright", required = false)
     private String copyright;
     @ElementList(name = "item", inline = true)
     private List<Article> articles;
-    @Element(name = "lastBuildDate")
+    @Element(name = "lastBuildDate", required = false)
     private String lastBuildDate;
-    @Element(name = "link")
+    @Element(name = "link", required = false)
     private String link;
-    @Element(name = "description")
+    @Element(name = "description", required = false)
     private String description;
-    @Element(name = "language")
+    @Element(name = "language", required = false)
     private String language;
-    @Element(name = "title")
+    @Element(name = "title", required = false)
     private String title;
-    @Element(name = "pubDate")
+    @Element(name = "pubDate", required = false)
     private String pubDate;
 
     public Image getImage() {

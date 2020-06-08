@@ -11,15 +11,15 @@ import org.simpleframework.xml.Root;
 @Root(name = "image", strict = false)
 public class Image {
 
-    @Element(name = "link")
+    @Element(name = "link", required = false)
     private String link;
-    @Element(name = "width")
+    @Element(name = "width", required = false)
     private String width;
-    @Element(name = "title")
+    @Element(name = "title", required = false)
     private String title;
-    @Element(name = "url")
+    @Element(name = "url", required = false)
     private String url;
-    @Element(name = "height")
+    @Element(name = "height", required = false)
     private String height;
 
     public String getLink() {

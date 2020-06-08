@@ -1,28 +1,12 @@
 package com.zookanews.egyptlatestnews.model;
 
-import org.simpleframework.xml.Element;
-import org.simpleframework.xml.Root;
-
-/**
- * Created by Zo0okaDev (https://github.com/zo0oka)
- * On 07 Jun, 2020.
- * Have a nice day!
- */
-
-@Root(name = "item", strict = false)
 public class Article {
 
-    @Element(name = "enclosure")
     private Enclosure enclosure;
-    @Element(name = "link")
     private String link;
-    @Element(name = "description")
-    private String description;
-    @Element(name = "guid")
+    private Description description;
     private String guid;
-    @Element(name = "title")
     private String title;
-    @Element(name = "pubDate")
     private String pubDate;
 
     public Enclosure getEnclosure() {
@@ -41,11 +25,11 @@ public class Article {
         this.link = link;
     }
 
-    public String getDescription() {
+    public Description getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(Description description) {
         this.description = description;
     }
 

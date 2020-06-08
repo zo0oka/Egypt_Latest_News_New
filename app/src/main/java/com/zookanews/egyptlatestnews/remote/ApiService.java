@@ -1,9 +1,9 @@
 package com.zookanews.egyptlatestnews.remote;
 
-import com.zookanews.egyptlatestnews.model.RssFeedResponse;
-
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Url;
 
 /**
  * Created by Zo0okaDev (https://github.com/zo0oka)
@@ -11,7 +11,6 @@ import retrofit2.http.GET;
  * Have a nice day!
  */
 public interface ApiService {
-
-    @GET("rss.aspx")
-    Call<RssFeedResponse> getResponse();
+    @GET
+    Call<ResponseBody> getResponse(@Url String url);
 }

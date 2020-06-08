@@ -12,10 +12,10 @@ import org.simpleframework.xml.Root;
 @Root(name = "rss", strict = false)
 public class RssFeedResponse {
 
-    @Element(name = "channel")
+    @Element(name = "channel", required = false)
     private Channel channel;
 
-    @Attribute(name = "version")
+    @Attribute(name = "version", required = false)
     private String version;
 
     public Channel getChannel() {
