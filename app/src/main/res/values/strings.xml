@@ -81,6 +81,13 @@
     <string name="favorite">Favorite</string>
     <string name="favorite_icon">Favorite icon</string>
     <string name="nav_favorites">الاخبار المفضلة</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nav_opinion">أقلام وآراء</string>
+    <string name="nav_world_arab">عرب وعالم</string>
+    <string name="nav_fashion">الموضة</string>
+    <string name="nav_corona">فيروس كورونا</string>
+    <string name="nav_akhbar_alyoum">أخبار اليوم</string>
+    <string name="nav_alyoum7">اليوم السابع</string>
+    <string name="nav_alshorouk">الشروق</string>
+    <string name="nav_arab_finance">Arab Finance</string>
+    <string name="ADMOB_APP_ID">ca-app-pub-4040319527918836~7183078616</string>
 </resources>

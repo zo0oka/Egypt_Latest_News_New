@@ -7,20 +7,17 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "feeds_table", indices = {@Index(value = {"rss_link"}, unique = true)})
+@Entity(tableName = "feeds", indices = {@Index(value = {"rss_link"}, unique = true)})
 public class Feed {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "ID")
-    private int feedId;
-
-    @ColumnInfo(name = "title")
-    private String feedTitle;
+    @ColumnInfo(name = "id")
+    private int id;
 
     @NonNull
     @ColumnInfo(name = "rss_link")
-    private String feedRssLink;
+    private String rssLink;
 
     @ColumnInfo(name = "category_name")
     private String categoryName;
@@ -28,46 +25,35 @@ public class Feed {
     @ColumnInfo(name = "website_name")
     private String websiteName;
 
-    public Feed(@NonNull int feedId, String feedTitle, @NonNull String feedRssLink, String categoryName, String websiteName) {
-        this.feedId = feedId;
-        this.feedTitle = feedTitle;
-        this.feedRssLink = feedRssLink;
+    public Feed(int id, @NonNull String rssLink, String categoryName, String websiteName) {
+        this.id = id;
+        this.rssLink = rssLink;
         this.categoryName = categoryName;
         this.websiteName = websiteName;
     }
 
     @Ignore
-    public Feed(String feedTitle, @NonNull String feedRssLink, String categoryName, String websiteName) {
-        this.feedTitle = feedTitle;
-        this.feedRssLink = feedRssLink;
+    public Feed(@NonNull String rssLink, String categoryName, String websiteName) {
+        this.rssLink = rssLink;
         this.categoryName = categoryName;
         this.websiteName = websiteName;
     }
 
-    @NonNull
-    public int getFeedId() {
-        return feedId;
+    public int getId() {
+        return id;
     }
 
-    public void setFeedId(@NonNull int feedId) {
-        this.feedId = feedId;
-    }
-
-    public String getFeedTitle() {
-        return feedTitle;
-    }
-
-    public void setFeedTitle(String feedTitle) {
-        this.feedTitle = feedTitle;
+    public void setId(int id) {
+        this.id = id;
     }
 
     @NonNull
-    public String getFeedRssLink() {
-        return feedRssLink;
+    public String getRssLink() {
+        return rssLink;
     }
 
-    public void setFeedRssLink(@NonNull String feedRssLink) {
-        this.feedRssLink = feedRssLink;
+    public void setRssLink(@NonNull String rssLink) {
+        this.rssLink = rssLink;
     }
 
     public String getCategoryName() {

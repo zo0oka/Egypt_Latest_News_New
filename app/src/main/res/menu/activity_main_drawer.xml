@@ -9,10 +9,17 @@
             <menu>
                 <item
                     android:id="@+id/nav_latest_news"
-                    android:icon="@drawable/ic_nav_latest_news"
+                    android:icon="@drawable/ic_main_menu"
                     android:title="@string/nav_latest_news"
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_corona"
+                    android:icon="@drawable/ic_nav_health"
+                    android:title="@string/nav_corona"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
+
                 <item
                     android:id="@+id/nav_politics"
                     android:icon="@drawable/ic_nav_politics"
@@ -85,13 +92,30 @@
                     android:title="@string/nav_travel"
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
-                <article
+                <item
                     android:id="@+id/nav_health"
                     android:icon="@drawable/ic_nav_health"
                     android:title="@string/nav_health"
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
-
+                <item
+                    android:id="@+id/nav_opinion"
+                    android:icon="@drawable/ic_nav_health"
+                    android:title="@string/nav_opinion"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_world_arab"
+                    android:icon="@drawable/ic_nav_health"
+                    android:title="@string/nav_world_arab"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_fashion"
+                    android:icon="@drawable/ic_nav_health"
+                    android:title="@string/nav_fashion"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
             </menu>
         </item>
     </group>
@@ -148,9 +172,9 @@
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
                 <item
-                    android:id="@+id/nav_akhbar_elhawadeth"
+                    android:id="@+id/nav_akhbar_alyoum"
                     android:icon="@drawable/ic_nav_website_icon"
-                    android:title="@string/nav_akhbar_elhawadeth"
+                    android:title="@string/nav_akhbar_alyoum"
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
                 <item
@@ -169,6 +193,24 @@
                     android:id="@+id/nav_almogaz"
                     android:icon="@drawable/ic_nav_website_icon"
                     android:title="@string/nav_almogaz"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_alyoum7"
+                    android:icon="@drawable/ic_nav_website_icon"
+                    android:title="@string/nav_alyoum7"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_alshorouk"
+                    android:icon="@drawable/ic_nav_website_icon"
+                    android:title="@string/nav_alshorouk"
+                    app:actionViewClass="android.widget.TextView"
+                    app:showAsAction="always" />
+                <item
+                    android:id="@+id/nav_arab_finance"
+                    android:icon="@drawable/ic_nav_website_icon"
+                    android:title="@string/nav_arab_finance"
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
                 <item

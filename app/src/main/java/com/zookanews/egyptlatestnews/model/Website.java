@@ -4,86 +4,89 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "websites_table")
+@Entity(tableName = "websites", indices = {@Index(value = {"name"}, unique = true)})
 public class Website {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "ID")
-    private int websiteId;
+    @ColumnInfo(name = "id")
+    private int id;
 
     @ColumnInfo(name = "title")
-    private String websiteTitle;
+    private String title;
+
+    @ColumnInfo(name = "menu_id")
+    private int menuId;
 
     @NonNull
     @ColumnInfo(name = "name")
-    private String websiteName;
+    private String name;
 
-    @ColumnInfo(name = "link")
-    private String websiteLink;
-
-    @NonNull
-    @ColumnInfo(name = "rss_link")
-    private String websiteRssLink;
-
-    public Website(@NonNull int websiteId, @NonNull String websiteName, String websiteTitle, String websiteLink, @NonNull String websiteRssLink) {
-        this.websiteId = websiteId;
-        this.websiteName = websiteName;
-        this.websiteTitle = websiteTitle;
-        this.websiteLink = websiteLink;
-        this.websiteRssLink = websiteRssLink;
+    public Website(int id, String title, int menuId, @NonNull String name) {
+        this.id = id;
+        this.menuId = menuId;
+        this.title = title;
+        this.name = name;
     }
 
     @Ignore
-    public Website(@NonNull String websiteName, String websiteTitle, String websiteLink, @NonNull String websiteRssLink) {
-        this.websiteName = websiteName;
-        this.websiteTitle = websiteTitle;
-        this.websiteLink = websiteLink;
-        this.websiteRssLink = websiteRssLink;
+    public Website(String title, int menuId, @NonNull String name) {
+        this.title = title;
+        this.menuId = menuId;
+        this.name = name;
+    }
+
+    public int getMenuId() {
+        return menuId;
+    }
+
+    public void setMenuId(int menuId) {
+        this.menuId = menuId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @NonNull
-    public int getWebsiteId() {
-        return websiteId;
+    public String getName() {
+        return name;
     }
 
-    public void setWebsiteId(@NonNull int websiteId) {
-        this.websiteId = websiteId;
+    public void setName(@NonNull String name) {
+        this.name = name;
     }
 
-    public String getWebsiteTitle() {
-        return websiteTitle;
-    }
-
-    public void setWebsiteTitle(String websiteTitle) {
-        this.websiteTitle = websiteTitle;
-    }
-
-    @NonNull
-    public String getWebsiteName() {
-        return websiteName;
-    }
-
-    public void setWebsiteName(@NonNull String websiteName) {
-        this.websiteName = websiteName;
-    }
-
-    public String getWebsiteLink() {
-        return websiteLink;
-    }
-
-    public void setWebsiteLink(String websiteLink) {
-        this.websiteLink = websiteLink;
-    }
-
-    @NonNull
-    public String getWebsiteRssLink() {
-        return websiteRssLink;
-    }
-
-    public void setWebsiteRssLink(@NonNull String websiteRssLink) {
-        this.websiteRssLink = websiteRssLink;
+    public static class WebsiteNames {
+        public static final String ALMASRY_ALYOUM = "almasry_alyoum";
+        public static final String ALWATAN = "alwatan";
+        public static final String ALDOSTOUR = "aldostour";
+        public static final String AKHBARAK = "akhbarak";
+        public static final String ALWAFD = "alwafd";
+        public static final String BBC_ARABIA = "bbc_arabic";
+        public static final String ALFAGR = "alfagr";
+        public static final String ROSE_ALYOUSEF = "rose_alyousef";
+        public static final String AKHBAR_ELYOUM = "akhbar_elyoum";
+        public static final String SADA_ELBALAD = "sada_albalad";
+        public static final String BAWABET_VETO = "bawabet_veto";
+        public static final String ALMOGAZ = "almogaz";
+        public static final String ALYOUM7 = "alyoum7";
+        public static final String AL_SHOROUK = "al_shorouk";
+        public static final String ARAB_FINANCE = "arab_finance";
     }
 }

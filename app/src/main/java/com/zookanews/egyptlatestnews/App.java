@@ -5,6 +5,8 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.zookanews.egyptlatestnews.db.AppDB;
+
 import timber.log.Timber;
 
 /**
@@ -26,5 +28,7 @@ public class App extends Application {
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
         }
+
+        AppDB db = AppDB.getDatabase(this);
     }
 }
