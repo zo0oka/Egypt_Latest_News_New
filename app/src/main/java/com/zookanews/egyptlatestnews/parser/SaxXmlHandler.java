@@ -1,8 +1,8 @@
 package com.zookanews.egyptlatestnews.parser;
 
-import android.annotation.SuppressLint;
-
+import com.zookanews.egyptlatestnews.helper.Constants;
 import com.zookanews.egyptlatestnews.model.Article;
+import com.zookanews.egyptlatestnews.model.Website;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import timber.log.Timber;
 
@@ -20,7 +21,7 @@ public class SaxXmlHandler extends DefaultHandler {
     private final String websiteName;
     private StringBuilder tempValue = new StringBuilder();
     private List<Article> articles;
-    private String link, title, description, imgSrc, guid, enclosure, thumb_url, mediaThumbnail, articleLink, articleThumbnailUrl, imageUrl, content;
+    private String link, title, articleDescription, description, imgSrc, guid, enclosure, thumb_url, mediaThumbnail, articleLink, articleThumbnailUrl, imageUrl, content;
     private Long pubDate;
 
     public SaxXmlHandler(String categoryName, String websiteName) {
@@ -71,7 +72,13 @@ public class SaxXmlHandler extends DefaultHandler {
             } else {
                 articlePubDate = Calendar.getInstance().getTime().getTime();
             }
-            articles.add(new Article(title, articleLink, description, content, articlePubDate, articleThumbnailUrl,
+            if (content != null) {
+                articleDescription = content;
+            } else {
+                articleDescription = description;
+            }
+            articles.add(new Article(title, articleLink, articleDescription, articlePubDate,
+                    websiteName.equals(Website.WebsiteNames.ALWATAN) ? Constants.ELWATAN_THUMBNAIL_URL_PREFIX + articleThumbnailUrl : articleThumbnailUrl,
                     websiteName, categoryName, false, false));
         } else if (qName.equalsIgnoreCase("title")) {
             title = tempValue.toString();
@@ -91,7 +98,7 @@ public class SaxXmlHandler extends DefaultHandler {
                 Timber.d(String.valueOf(tempValue.lastIndexOf("\"")));
                 int start = tempValue.indexOf("src=\"") + 5;
                 Timber.d(String.valueOf(start));
-                int end = tempValue.lastIndexOf("\"");
+                int end = tempValue.indexOf("\"", start + 1);
                 Timber.d(String.valueOf(end));
                 imgSrc = tempValue.substring(start, end);
             }
@@ -109,33 +116,43 @@ public class SaxXmlHandler extends DefaultHandler {
             imageUrl = tempValue.toString();
             Timber.d("Tag url: %s", imageUrl);
         } else if (qName.equalsIgnoreCase("pubDate")) {
-            try {
-                pubDate = getMillisFromString(tempValue.toString());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            Timber.d("Received Date: %s", tempValue);
+            pubDate = getMillisFromString(tempValue.toString());
             Timber.d("Tag pubDate: %s", pubDate);
         }
     }
 
-    @SuppressWarnings("ConstantConditions")
-    @SuppressLint("SimpleDateFormat")
-    private long getMillisFromString(String dateString) throws ParseException {
-        long pubDate;
-        int lettersCount = dateString.length();
-        if (lettersCount == 29) {
-            pubDate = ((new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z")).parse(dateString.replace("GMT", "EET"))).getTime();
-        } else if (lettersCount == 19) {
-            pubDate = ((new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).parse(dateString)).getTime();
-        } else if (lettersCount == 31) {
-            pubDate = ((new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z")).parse(dateString)).getTime();
-        } else if (lettersCount == 26) {
-            pubDate = ((new SimpleDateFormat("EEE , dd-MM-yyyy HH:mm:ss")).parse(dateString)).getTime();
+    private long getMillisFromString(String dateString) {
+
+        long pubDateLong = 0;
+
+
+        if (dateString.length() == 27) {
+            SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.ENGLISH);
+            Timber.d("Time Format is: EEE, dd MMM yyyy HH:mm:ss Z -> Received Date: " + dateString);
+            try {
+                pubDateLong = sdf.parse(dateString).getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        } else if (dateString.length() == 31) {
+
+            SimpleDateFormat sdf = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss '+0200'", Locale.ENGLISH);
+            Timber.d("Time Format is: EEE, dd MMM yyyy HH:mm:ss '+0200' -> Received Date: " + dateString);
+            try {
+                pubDateLong = sdf.parse(dateString).getTime();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         } else {
-            pubDate = Calendar.getInstance().getTime().getTime();
+
+            Timber.d("Undefined Time Format -> Received Date: " + dateString);
+            Calendar calendar = Calendar.getInstance();
+            pubDateLong = calendar.getTimeInMillis();
         }
-        return Calendar.getInstance().getTimeInMillis();
+        return pubDateLong;
     }
+
 
     public void characters(char[] ch, int start, int length) {
         tempValue.append(ch, start, length);

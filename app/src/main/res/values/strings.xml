@@ -1,57 +1,57 @@
 <resources>
     <string name="app_name">Egypt Latest News</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_gallery" translatable="false">Gallery</string>
+    <string name="menu_slideshow" translatable="false">Slideshow</string>
 
-    <string name="admob_banner_adunit_id">ca-app-pub-4040319527918836/3247703038</string>
-    <string name="facebook_app_id">277320703137038</string>
+    <string name="admob_banner_adunit_id" translatable="false">ca-app-pub-4040319527918836/3247703038</string>
+    <string name="facebook_app_id" translatable="false">277320703137038</string>
 
-    <string name="view_article_on_website">قراءة الموضوع كاملا</string>
+    <string name="view_article_on_website" translatable="false">قراءة الموضوع كاملا</string>
     <string name="search">Search</string>
     <string name="search_hint">Search…</string>
-    <string name="nav_main_menu">الرئيسية</string>
-    <string name="nav_latest_news">أخر الأخبار</string>
-    <string name="nav_politics">الأخبار السياسية</string>
-    <string name="nav_accidents">حوادث وقضايا</string>
-    <string name="nav_finance">إقتصاد وبنوك</string>
-    <string name="nav_sports">أخبار الرياضة</string>
-    <string name="nav_woman">عالم المرأة والمنوعات</string>
-    <string name="nav_arts">أخبار الفن</string>
-    <string name="nav_technology">علوم وتكنولوجيا</string>
-    <string name="nav_videos">فيديوهات</string>
-    <string name="nav_automotive">عالم السيارات</string>
-    <string name="nav_investigations">تحقيقات وحوارات</string>
-    <string name="nav_culture">الثقافة</string>
-    <string name="nav_travel">سياحة وطيران</string>
-    <string name="nav_health">الصحة والجمال</string>
-    <string name="nav_sections">الأقسام الفرعية</string>
-    <string name="nav_almasry_alyoum">المصرى اليوم</string>
-    <string name="nav_alwatan">الوطن</string>
-    <string name="nav_aldostour">الدستور</string>
-    <string name="nav_akhbarak">أخبارك</string>
-    <string name="nav_alwafd">الوفد</string>
-    <string name="nav_bbc_arabic">BBC</string>
-    <string name="nav_alfagr">بوابة الفجر الإلكترونية</string>
-    <string name="nav_rose_alyousef">جريدة روز اليوسف</string>
-    <string name="nav_akhbar_elhawadeth">أخبار الحوادث</string>
-    <string name="nav_sada_elbalad">صدى البلد</string>
-    <string name="nav_bawabet_veto">بوابة فيتو</string>
-    <string name="nav_almogaz">الموجز</string>
-    <string name="nav_tools">الأدوات</string>
-    <string name="nav_sync_news">تحديث الأخبار</string>
-    <string name="nav_settings">الإعدادات</string>
-    <string name="nav_privacy_policy">سياسة الخصوصية</string>
+    <string name="nav_main_menu" translatable="false">الرئيسية</string>
+    <string name="nav_latest_news" translatable="false">أخر الأخبار</string>
+    <string name="nav_politics" translatable="false">الأخبار السياسية</string>
+    <string name="nav_accidents" translatable="false">حوادث وقضايا</string>
+    <string name="nav_finance" translatable="false">إقتصاد وبنوك</string>
+    <string name="nav_sports" translatable="false">أخبار الرياضة</string>
+    <string name="nav_woman" translatable="false">عالم المرأة والمنوعات</string>
+    <string name="nav_arts" translatable="false">أخبار الفن</string>
+    <string name="nav_technology" translatable="false">علوم وتكنولوجيا</string>
+    <string name="nav_videos" translatable="false">فيديوهات</string>
+    <string name="nav_automotive" translatable="false">عالم السيارات</string>
+    <string name="nav_investigations" translatable="false">تحقيقات وحوارات</string>
+    <string name="nav_culture" translatable="false">الثقافة</string>
+    <string name="nav_travel" translatable="false">سياحة وطيران</string>
+    <string name="nav_health" translatable="false">الصحة والجمال</string>
+    <string name="nav_sections" translatable="false">الأقسام الفرعية</string>
+    <string name="nav_almasry_alyoum" translatable="false">المصرى اليوم</string>
+    <string name="nav_alwatan" translatable="false">الوطن</string>
+    <string name="nav_aldostour" translatable="false">الدستور</string>
+    <string name="nav_akhbarak" translatable="false">أخبارك</string>
+    <string name="nav_alwafd" translatable="false">الوفد</string>
+    <string name="nav_bbc_arabic" translatable="false">BBC</string>
+    <string name="nav_alfagr" translatable="false">بوابة الفجر الإلكترونية</string>
+    <string name="nav_rose_alyousef" translatable="false">جريدة روز اليوسف</string>
+    <string name="nav_akhbar_elhawadeth" translatable="false">أخبار الحوادث</string>
+    <string name="nav_sada_elbalad" translatable="false">صدى البلد</string>
+    <string name="nav_bawabet_veto" translatable="false">بوابة فيتو</string>
+    <string name="nav_almogaz" translatable="false">الموجز</string>
+    <string name="nav_tools" translatable="false">الأدوات</string>
+    <string name="nav_sync_news" translatable="false">تحديث الأخبار</string>
+    <string name="nav_settings" translatable="false">الإعدادات</string>
+    <string name="nav_privacy_policy" translatable="false">سياسة الخصوصية</string>
 
-    <string name="article_detail">Article Detail</string>
-    <string name="article_webView">Article WebView</string>
+    <string name="article_detail" translatable="false">Article Detail</string>
+    <string name="article_webView" translatable="false">Article WebView</string>
 
     <string name="pref_header_synchronization">Synchronization</string>
     <string name="pref_header_message_storage">Message Storage</string>
@@ -72,22 +72,34 @@
     <string name="pref_summary_vibrate">Vibrate for new articles notification</string>
     <string name="pref_title_light">Light</string>
     <string name="pref_title_sync_frequency">Sync frequency</string>
-    <string name="article_thumbnail">Article thumbnail</string>
+    <string name="article_thumbnail" translatable="false">Article thumbnail</string>
     <string name="pref_title_feedback">Feedback</string>
     <string name="pref_title_help">Help</string>
     <string name="pref_title_privacy_policy">Privacy Policy</string>
     <string name="pref_title_about">About</string>
     <string name="read_icon">Read icon</string>
-    <string name="favorite">Favorite</string>
-    <string name="favorite_icon">Favorite icon</string>
-    <string name="nav_favorites">الاخبار المفضلة</string>
-    <string name="nav_opinion">أقلام وآراء</string>
-    <string name="nav_world_arab">عرب وعالم</string>
-    <string name="nav_fashion">الموضة</string>
-    <string name="nav_corona">فيروس كورونا</string>
-    <string name="nav_akhbar_alyoum">أخبار اليوم</string>
-    <string name="nav_alyoum7">اليوم السابع</string>
-    <string name="nav_alshorouk">الشروق</string>
-    <string name="nav_arab_finance">Arab Finance</string>
-    <string name="ADMOB_APP_ID">ca-app-pub-4040319527918836~7183078616</string>
+    <string name="favorite" translatable="false">Favorite</string>
+    <string name="favorite_icon" translatable="false">Favorite icon</string>
+    <string name="nav_favorites" translatable="false">الاخبار المفضلة</string>
+    <string name="nav_opinion" translatable="false">أقلام وآراء</string>
+    <string name="nav_world_arab" translatable="false">عرب وعالم</string>
+    <string name="nav_fashion" translatable="false">الموضة</string>
+    <string name="nav_corona" translatable="false">فيروس كورونا</string>
+    <string name="nav_akhbar_alyoum" translatable="false">أخبار اليوم</string>
+    <string name="nav_alyoum7" translatable="false">اليوم السابع</string>
+    <string name="nav_alshorouk" translatable="false">الشروق</string>
+    <string name="nav_arab_finance" translatable="false">Arab Finance</string>
+    <string name="ADMOB_APP_ID" translatable="false">ca-app-pub-4040319527918836~7183078616</string>
+    <string name="home" translatable="false">الرئيسية</string>
+    <string name="share">Share</string>
+    <string name="snack_bar_text">Item removed from favorites.</string>
+    <string name="snack_bar_undo">Undo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="seconds_ago">" seconds ago."</string>
+    <string name="minutes_sgo">" minutes ago."</string>
+    <string name="hours_ago">" hours ago."</string>
+    <string name="days_ago">" days ago."</string>
+    <string name="months_ago">" months ago."</string>
+    <string name="years_ago">" years ago."</string>
 </resources>

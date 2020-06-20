@@ -1,5 +1,6 @@
 package com.zookanews.egyptlatestnews.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -18,5 +19,5 @@ public interface WebsiteDao {
     void insertWebsites(List<Website> websites);
 
     @Query("SELECT * FROM websites WHERE name = :websiteName")
-    Website getWebsiteByName(String websiteName);
+    LiveData<Website> getWebsiteByName(String websiteName);
 }

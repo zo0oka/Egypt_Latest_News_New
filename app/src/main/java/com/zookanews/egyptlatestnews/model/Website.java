@@ -7,6 +7,8 @@ import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
+import org.jetbrains.annotations.NotNull;
+
 @Entity(tableName = "websites", indices = {@Index(value = {"name"}, unique = true)})
 public class Website {
 
@@ -25,7 +27,7 @@ public class Website {
     @ColumnInfo(name = "name")
     private String name;
 
-    public Website(int id, String title, int menuId, @NonNull String name) {
+    public Website(int id, @NotNull String name, int menuId, String title) {
         this.id = id;
         this.menuId = menuId;
         this.title = title;
@@ -33,7 +35,7 @@ public class Website {
     }
 
     @Ignore
-    public Website(String title, int menuId, @NonNull String name) {
+    public Website(@NotNull String name, int menuId, String title) {
         this.title = title;
         this.menuId = menuId;
         this.name = name;

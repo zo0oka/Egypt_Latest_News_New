@@ -13,7 +13,6 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.RequestConfiguration;
 import com.zookanews.egyptlatestnews.BuildConfig;
-import com.zookanews.egyptlatestnews.R;
 
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +27,7 @@ import timber.log.Timber;
 public class AdsHelper {
 
     public static void initAds(Context context) {
-        MobileAds.initialize(context, context.getString(R.string.ADMOB_APP_ID));
+        MobileAds.initialize(context);
         List<String> testDeviceIds = Collections.singletonList("548483E778E0749009F9BFD3D3A2636D");
         if (BuildConfig.DEBUG) {
             RequestConfiguration configuration =

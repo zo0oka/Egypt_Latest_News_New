@@ -4,8 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item android:title="@string/nav_main_menu">
+    <group
+        android:id="@+id/menu_categories_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_main_categories"
+            android:title="@string/nav_main_menu">
             <menu>
                 <item
                     android:id="@+id/nav_latest_news"
@@ -120,8 +124,12 @@
         </item>
     </group>
 
-    <group android:checkableBehavior="single">
-        <item android:title="@string/nav_sections">
+    <group
+        android:id="@+id/menu_websites_group"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_sub_categories"
+            android:title="@string/nav_sections">
             <menu>
                 <item
                     android:id="@+id/nav_almasry_alyoum"
@@ -214,7 +222,7 @@
                     app:actionViewClass="android.widget.TextView"
                     app:showAsAction="always" />
                 <item
-                    android:id="@+id/nav_favorites"
+                    android:id="@+id/nav_favoritesFragment"
                     android:icon="@drawable/ic_nav_favorite"
                     android:title="@string/nav_favorites"
                     app:actionViewClass="android.widget.TextView"
@@ -224,12 +232,12 @@
     </group>
     <item android:title="@string/nav_tools">
         <menu>
+            <!--            <item-->
+            <!--                android:id="@+id/nav_sync_news"-->
+            <!--                android:icon="@drawable/ic_nav_sync"-->
+            <!--                android:title="@string/nav_sync_news" />-->
             <item
-                android:id="@+id/nav_sync_news"
-                android:icon="@drawable/ic_nav_sync"
-                android:title="@string/nav_sync_news" />
-            <item
-                android:id="@+id/nav_settings"
+                android:id="@+id/nav_settingsFragment"
                 android:icon="@drawable/ic_nav_settings"
                 android:title="@string/nav_settings" />
             <item

@@ -3,9 +3,79 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/nav_homeFragment">
+    app:startDestination="@id/nav_homeFragment">
     <fragment
         android:id="@+id/nav_homeFragment"
         android:name="com.zookanews.egyptlatestnews.ui.fragments.HomeFragment"
-        tools:layout="@layout/fragment_home"></fragment>
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_homeFragment_to_nav_newsArticleDetailsFragment"
+            app:destination="@id/nav_newsArticleDetailsFragment" />
+        <action
+            android:id="@+id/action_nav_homeFragment_to_nav_searchResultFragment"
+            app:destination="@id/nav_searchResultFragment" />
+        <action
+            android:id="@+id/action_nav_homeFragment_to_nav_settingsFragment"
+            app:destination="@id/nav_settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_categoryArticlesFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.CategoryArticlesFragment"
+        tools:layout="@layout/fragment_category_articles">
+        <argument
+            android:name="category_name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_nav_categoryArticlesFragment_to_nav_newsArticleDetailsFragment"
+            app:destination="@id/nav_newsArticleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_websiteArticlesFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.WebsiteArticlesFragment"
+        tools:layout="@layout/fragment_website_articles">
+        <action
+            android:id="@+id/action_nav_websiteArticlesFragment_to_nav_newsArticleDetailsFragment"
+            app:destination="@id/nav_newsArticleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_favoritesFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.FavoritesFragment"
+        tools:layout="@layout/fragment_favorites">
+        <action
+            android:id="@+id/action_nav_favoritesFragment_to_nav_newsArticleDetailsFragment"
+            app:destination="@id/nav_newsArticleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_newsArticleDetailsFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.NewsArticleDetailsFragment"
+        tools:layout="@layout/fragment_news_article_details">
+        <argument
+            android:name="article_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_nav_newsArticleDetailsFragment_to_nav_webViewFragment"
+            app:destination="@id/nav_webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_webViewFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.WebViewFragment"
+        tools:layout="@layout/fragment_web_view">
+        <argument
+            android:name="article_link"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_searchResultFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.SearchResultFragment"
+        tools:layout="@layout/fragment_search_result">
+        <action
+            android:id="@+id/action_nav_searchResultFragment_to_nav_newsArticleDetailsFragment"
+            app:destination="@id/nav_newsArticleDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_settingsFragment"
+        android:name="com.zookanews.egyptlatestnews.ui.fragments.SettingsFragment"
+        android:label="@string/action_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

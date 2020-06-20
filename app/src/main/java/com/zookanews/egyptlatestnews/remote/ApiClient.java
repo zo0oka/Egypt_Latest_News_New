@@ -13,7 +13,6 @@ import org.xml.sax.XMLReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -77,6 +76,8 @@ public class ApiClient {
     public static void loadNews(ApiService service, List<Feed> feeds, NewsListener listener) {
         for (Feed feed : feeds) {
             Timber.d("Loading Feed: %s", feed.getRssLink());
+            Timber.d("Loading Feed Category: %s", feed.getCategoryName());
+            Timber.d("Loading Feed Website: %s", feed.getWebsiteName());
             service.getResponse(feed.getRssLink()).enqueue(new Callback<ResponseBody>() {
                 @Override
                 public void onResponse(@NotNull Call<ResponseBody> call, @NotNull Response<ResponseBody> response) {
@@ -85,8 +86,6 @@ public class ApiClient {
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
                             listener.onNewsSuccess(parseNewsArticles(response.body(), feed.getCategoryName(), feed.getWebsiteName()));
-                        } else {
-                            listener.onNewsSuccess(Collections.emptyList());
                         }
                     } else {
                         String errorString = null;

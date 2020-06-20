@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">أخبار مصر</string>
+    <string name="action_settings">الإعدادات</string>
+    <string name="menu_home">الرئيسية</string>
+    <string name="search">بحث</string>
+    <string name="search_hint">بحث...</string>
+    <string name="share">مشاركة</string>
+    <string name="snack_bar_text">تم الحذف من المفضلات</string>
+    <string name="snack_bar_undo">إرجاع</string>
+    <string name="pref_header_synchronization">المزامنة</string>
+    <string name="pref_header_message_storage">تخزين الرسائل</string>
+    <string name="pref_header_notifications">التنبيهات</string>
+    <string name="pref_header_other">أخري</string>
+    <string name="pref_title_automatic_background_sync">تحديث تلقائي</string>
+    <string name="pref_title_sync_on_startup">التحديث عند بدء التشغيل</string>
+    <string name="pref_title_wifi_only_for_download">التحديت بإستخدام Wi-Fi فقط</string>
+    <string name="pref_summary_wifi_only_for_download">التحديث في حالة الاتصال بالWi-Fi فقط</string>
+    <string name="pref_title_keep_unread_articles">حفظ الاخبار الغير مقروءة</string>
+    <string name="pref_title_auto_cleanup_read">مسح تلقائي للأخبار المقروءة</string>
+    <string name="pref_summary_auto_cleanup_read">مسح تلقائي للأخبار المقروءة بعد الأيام المحددة</string>
+    <string name="pref_title_auto_cleanup_unread">مسح تلقائي للأخبار الغير مقروءة</string>
+    <string name="pref_summary_auto_cleanup_unread">مسح تلقائي للأخبار الغير مقروءة بعد الأيام المحددة</string>
+    <string name="pref_title_new_article_notifications">تبيهات الأخبار الجديدة</string>
+    <string name="pref_summary_new_article_notifications">تفعيل التنبيهات للأخبار الجديدة</string>
+    <string name="pref_title_vibrate">الإهتزاز</string>
+    <string name="pref_summary_vibrate">تفعيل الإهتزاز لتنبيهات الأاخبار الجديدة</string>
+    <string name="pref_title_light">ضوء التنبيهات</string>
+    <string name="pref_title_sync_frequency">وقت التحديث</string>
+    <string name="pref_title_feedback">مراسلة</string>
+    <string name="pref_title_help">مساعدة</string>
+    <string name="pref_title_privacy_policy">سياسة الخصوصية</string>
+    <string name="pref_title_about">حول التطبيق</string>
+    <string name="seconds_ago">" ثواني"</string>
+    <string name="minutes_sgo">" دقيقة"</string>
+    <string name="hours_ago">" ساعة"</string>
+    <string name="days_ago">" يوم"</string>
+    <string name="months_ago">" شهر"</string>
+    <string name="years_ago">" سنة"</string>
+</resources>

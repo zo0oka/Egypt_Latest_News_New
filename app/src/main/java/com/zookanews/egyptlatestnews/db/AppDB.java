@@ -21,38 +21,32 @@ import com.zookanews.egyptlatestnews.model.Website;
 import com.zookanews.egyptlatestnews.remote.ApiClient;
 
 import java.util.List;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import timber.log.Timber;
 
 @Database(entities = {Article.class, Category.class, Feed.class, Website.class}, version = 1, exportSchema = false)
-//@TypeConverters({TypeConverters.class})
 public abstract class AppDB extends RoomDatabase {
 
     private static volatile AppDB INSTANCE;
     private static final RoomDatabase.Callback callback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
+            super.onOpen(db);
             populateDB(INSTANCE);
         }
     };
 
     private static void populateDB(AppDB db) {
-        Executor executor = Executors.newFixedThreadPool(5);
+        ExecutorService executor = new ScheduledThreadPoolExecutor(30);
         Timber.d("DB Population...");
-        ApiClient.loadNews(ApiClient.getInstance(), DataManager.feeds, new NewsListener() {
+        executor.execute(() -> ApiClient.loadNews(ApiClient.getInstance(), DataManager.feeds, new NewsListener() {
             @Override
             public void onNewsSuccess(List<Article> newsArticles) {
                 for (Article article : newsArticles) {
-                    Timber.d("Inserted Article: " + article.getTitle());
-                    executor.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            db.articleDao().insertArticle(article);
-                        }
-                    });
+                    Timber.d("Inserted Article: %s", article.getTitle());
+                    executor.execute(() -> db.articleDao().insertArticle(article));
                 }
             }
 
@@ -65,27 +59,22 @@ public abstract class AppDB extends RoomDatabase {
             public void onNewsFailure(String failure) {
 
             }
-        });
+        }));
+
         for (Category category : DataManager.categories) {
-            Timber.d("Inserted Category: " + category.getName());
-            executor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    db.categoryDao().insertCategory(category);
-                }
-            });
+            Timber.d("Inserted Category: %s", category.getName());
+            executor.execute(() -> db.categoryDao().insertCategory(category));
         }
 
         for (Website website : DataManager.websites) {
-            Timber.d("Inserted Website: " + website.getName());
-            executor.execute(new Runnable() {
-                @Override
-                public void run() {
-                    db.websiteDao().insertWebsite(website);
-                }
-            });
+            Timber.d("Inserted Website: %s", website.getName());
+            executor.execute(() -> db.websiteDao().insertWebsite(website));
         }
 
+        for (Feed feed : DataManager.feeds) {
+            Timber.d("Inserted Feed: %s", feed.getRssLink());
+            executor.execute(() -> db.feedDao().insertFeed(feed));
+        }
     }
 
     public static AppDB getDatabase(final Context context) {

@@ -1,5 +1,6 @@
 package com.zookanews.egyptlatestnews.db.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -14,6 +15,6 @@ public interface CategoryDao {
     void insertCategory(Category category);
 
     @Query("SELECT * FROM categories WHERE name = :categoryName")
-    Category getCategoryByName(String categoryName);
+    LiveData<Category> getCategoryByName(String categoryName);
 
 }

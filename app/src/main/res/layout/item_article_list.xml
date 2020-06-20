@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="article"
             type="com.zookanews.egyptlatestnews.model.Article" />
+
+        <variable
+            name="handler"
+            type="com.zookanews.egyptlatestnews.interfaces.ClickHandlers.NewsArticleList" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:cardCornerRadius="4dp"
+        android:onClick="@{(theView) -> handler.onArticleClick(theView, article.id)}"
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="?android:attr/selectableItemBackground"
             android:layout_height="match_parent">
 
             <TextView
@@ -29,9 +36,11 @@
                 android:layout_margin="8dp"
                 android:gravity="start"
                 android:maxLines="2"
+                android:textColor="@color/secondaryDarkColor"
+                android:textStyle="bold"
                 android:text="@{article.title}"
-                android:textAlignment="viewStart"
                 android:textSize="18sp"
+                tools:text="News Title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,7 +52,7 @@
                 android:layout_height="0dp"
                 android:layout_margin="8dp"
                 android:maxLines="4"
-                android:text="@{article.description}"
+                tools:text="News Description"
                 app:layout_constraintBottom_toTopOf="@+id/pubDate_textView"
                 app:layout_constraintEnd_toStartOf="@+id/article_imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +76,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="@{String.valueOf(article.pubDate)}"
+                android:textAlignment="viewStart"
+                app:timeAgo="@{article.pubDate}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/isFavorite_imageView"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,22 +88,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                app:setImage="@{article.read ? @drawable/ic_read : @drawable/ic_unread}"
                 android:contentDescription="@string/read_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/article_imageView"
-                app:srcCompat="@{article.read ? @drawable/ic_read : @drawable/ic_unread}" />
+                tools:src="@drawable/ic_read" />
 
             <ImageView
                 android:id="@+id/isFavorite_imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:onClick="@{() -> handler.onFavorite(article.id, article.favorite)}"
                 android:contentDescription="@string/favorite_icon"
+                app:setImage="@{article.favorite ? @drawable/ic_action_favorite_checked : @drawable/ic_action_favorite_unchecked}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/isRead_imageView"
                 app:layout_constraintTop_toBottomOf="@+id/article_imageView"
-                app:srcCompat="@{article.favorite ? @drawable/ic_action_favorite_checked : @drawable/ic_action_favorite_unchecked}" />
+                tools:src="@drawable/ic_action_favorite_checked" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -13,7 +13,7 @@ public class Article {
     public static final DiffUtil.ItemCallback<Article> DIFF_CALLBACK = new DiffUtil.ItemCallback<Article>() {
         @Override
         public boolean areItemsTheSame(@NonNull Article oldItem, @NonNull Article newItem) {
-            return oldItem.getId() == newItem.getId();
+            return oldItem.getTitle().equals(newItem.getTitle());
         }
 
         @Override
@@ -32,8 +32,6 @@ public class Article {
     private String link;
     @ColumnInfo(name = "description")
     private String description;
-    @ColumnInfo(name = "content")
-    private String content;
     @ColumnInfo(name = "date")
     private Long pubDate;
     @ColumnInfo(name = "thumb_url")
@@ -47,12 +45,11 @@ public class Article {
     @ColumnInfo(name = "isFavorite")
     private Boolean isFavorite;
 
-    public Article(int id, String title, @NonNull String link, String description, String content, Long pubDate, String thumbUrl, String websiteName, String categoryName, Boolean isRead, Boolean isFavorite) {
+    public Article(int id, String title, @NonNull String link, String description, Long pubDate, String thumbUrl, String websiteName, String categoryName, Boolean isRead, Boolean isFavorite) {
         this.id = id;
         this.title = title;
         this.link = link;
         this.description = description;
-        this.content = content;
         this.pubDate = pubDate;
         this.thumbUrl = thumbUrl;
         this.websiteName = websiteName;
@@ -62,21 +59,16 @@ public class Article {
     }
 
     @Ignore
-    public Article(String title, @NonNull String link, String description, String content, Long pubDate, String thumbUrl, String websiteName, String categoryName, Boolean isRead, Boolean isFavorite) {
+    public Article(String title, @NonNull String link, String description, Long pubDate, String thumbUrl, String websiteName, String categoryName, Boolean isRead, Boolean isFavorite) {
         this.title = title;
         this.link = link;
         this.description = description;
-        this.content = content;
         this.pubDate = pubDate;
         this.thumbUrl = thumbUrl;
         this.websiteName = websiteName;
         this.categoryName = categoryName;
         this.isRead = isRead;
         this.isFavorite = isFavorite;
-    }
-
-    public static DiffUtil.ItemCallback<Article> getDiffCallback() {
-        return DIFF_CALLBACK;
     }
 
     public int getId() {
@@ -110,14 +102,6 @@ public class Article {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public Long getPubDate() {
@@ -178,7 +162,6 @@ public class Article {
                 + "Thumbnail: " + thumbUrl + "\n"
                 + "Website: " + websiteName + "\n"
                 + "Category: " + categoryName + "\n"
-                + "Content: " + content + "\n"
                 + "Read: " + isRead + ".";
     }
 }

@@ -4,8 +4,20 @@ import android.app.Application;
 import android.content.Context;
 
 import androidx.multidex.MultiDex;
+import androidx.work.Constraints;
+import androidx.work.Data;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 
-import com.zookanews.egyptlatestnews.db.AppDB;
+import com.zookanews.egyptlatestnews.helper.AdsHelper;
+import com.zookanews.egyptlatestnews.helper.LanguageManager;
+import com.zookanews.egyptlatestnews.helper.PreferencesManager;
+import com.zookanews.egyptlatestnews.worker.DbCleanUpWorker;
+import com.zookanews.egyptlatestnews.worker.DbSyncWorker;
+
+import java.util.concurrent.TimeUnit;
 
 import timber.log.Timber;
 
@@ -29,6 +41,41 @@ public class App extends Application {
             Timber.plant(new Timber.DebugTree());
         }
 
-        AppDB db = AppDB.getDatabase(this);
+        PreferencesManager.init(this);
+        LanguageManager.init(this);
+        AdsHelper.initAds(this);
+        initWorkManager();
+    }
+
+    private void initWorkManager() {
+        WorkManager workManager = WorkManager.getInstance(this);
+        PeriodicWorkRequest.Builder builder = new PeriodicWorkRequest.Builder(DbSyncWorker.class,
+                Integer.parseInt(PreferencesManager.getString(PreferencesManager.SYNC_FREQUENCY)), TimeUnit.MINUTES);
+        Constraints.Builder constraintsBuilder = new Constraints.Builder();
+        Constraints constraints;
+
+        if (PreferencesManager.getBoolean(PreferencesManager.WIFI_ONLY_FOR_DOWNLOAD)) {
+            constraints = constraintsBuilder.setRequiredNetworkType(NetworkType.UNMETERED).build();
+        } else {
+            constraints = constraintsBuilder.setRequiredNetworkType(NetworkType.CONNECTED).build();
+        }
+
+        builder.setConstraints(constraints);
+        PeriodicWorkRequest request = builder.build();
+
+        if (PreferencesManager.getBoolean(PreferencesManager.SYNC_ON_STARTUP)) {
+            workManager.enqueueUniquePeriodicWork("db_sync", ExistingPeriodicWorkPolicy.REPLACE, request);
+        } else {
+            workManager.enqueueUniquePeriodicWork("db_sync", ExistingPeriodicWorkPolicy.KEEP, request);
+        }
+
+        PeriodicWorkRequest periodicWorkRequest = new PeriodicWorkRequest.Builder(DbCleanUpWorker.class, 12, TimeUnit.HOURS)
+                .setInputData(new Data.Builder()
+                        .putBoolean(PreferencesManager.KEEP_UNREAD_ARTICLES, PreferencesManager.getBoolean(PreferencesManager.KEEP_UNREAD_ARTICLES))
+                        .putInt(PreferencesManager.AUTO_CLEANUP_UNREAD, Integer.parseInt(PreferencesManager.getString(PreferencesManager.AUTO_CLEANUP_UNREAD)))
+                        .putInt(PreferencesManager.AUTO_CLEANUP_READ, Integer.parseInt(PreferencesManager.getString(PreferencesManager.AUTO_CLEANUP_READ)))
+                        .build())
+                .build();
+        workManager.enqueue(periodicWorkRequest);
     }
 }
