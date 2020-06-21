@@ -11,5 +11,15 @@
         <domain includeSubdomains="true">feeds.bbci.co.uk</domain>
         <domain includeSubdomains="true">almogaz.com</domain>
         <domain includeSubdomains="true">shorouknews.com</domain>
+        <domain includeSubdomains="true">almasryalyoum.com</domain>
+        <domain includeSubdomains="true">elwatannews.com</domain>
+        <domain includeSubdomains="true">dostor.org</domain>
+        <domain includeSubdomains="true">akhbarak.net</domain>
+        <domain includeSubdomains="true">alwafd.news</domain>
+        <domain includeSubdomains="true">rosaelyoussef.com</domain>
+        <domain includeSubdomains="true">elfagr.com</domain>
+        <domain includeSubdomains="true">vetogate.com</domain>
+        <domain includeSubdomains="true">youm7.com</domain>
+        <domain includeSubdomains="true">arabfinance.com</domain>
     </domain-config>
 </network-security-config>
