@@ -63,7 +63,9 @@ public class DbSyncWorker extends Worker {
     @NonNull
     @Override
     public Result doWork() {
-        updateDB();
+        if (PreferencesManager.getBoolean(PreferencesManager.AUTOMATIC_BACKGROUND_SYNC)) {
+            updateDB();
+        }
         Timber.d("Worker Finished " + DbSyncWorker.class.getSimpleName() + " at %s", Calendar.getInstance().getTime().toString());
         return Result.success();
     }
