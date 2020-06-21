@@ -68,6 +68,7 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_textView"
+                android:src="@drawable/thumb_placeholder"
                 app:setImage="@{article.thumbUrl}" />
 
             <TextView

@@ -16,8 +16,4 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Light" />
 
-    <style name="MyButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:background">@drawable/background_secodary_color_rounded_4</item>
-    </style>
-
 </resources>
