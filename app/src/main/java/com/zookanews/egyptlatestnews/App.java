@@ -64,7 +64,7 @@ public class App extends Application {
         PeriodicWorkRequest request = builder.build();
 
         if (PreferencesManager.getBoolean(PreferencesManager.SYNC_ON_STARTUP)) {
-            workManager.enqueueUniquePeriodicWork("db_sync", ExistingPeriodicWorkPolicy.REPLACE, request);
+            workManager.enqueue(request);
         } else {
             workManager.enqueueUniquePeriodicWork("db_sync", ExistingPeriodicWorkPolicy.KEEP, request);
         }

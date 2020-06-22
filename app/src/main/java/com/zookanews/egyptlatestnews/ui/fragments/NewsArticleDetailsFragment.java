@@ -59,7 +59,7 @@ public class NewsArticleDetailsFragment extends Fragment implements ClickHandler
             articleId = getArguments().getInt(ARTICLE_ID);
         }
         viewModel = new ViewModelProvider(this).get(ArticleViewModel.class);
-        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+
     }
 
     @Override
@@ -73,6 +73,8 @@ public class NewsArticleDetailsFragment extends Fragment implements ClickHandler
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
 
         Timber.d("onViewCreated");
 
